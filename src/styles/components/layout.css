@@ -1,0 +1,35 @@
+.auth-page-container {
+  @apply flex justify-center space-x-8;
+  padding: 2rem;
+}
+
+.auth-container {
+  @apply bg-dark-secondary rounded-lg shadow-md p-8 w-full max-w-md;
+}
+
+.auth-title {
+  @apply text-2xl font-semibold text-white mb-6 text-center;
+}
+
+.user-info-summary {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4 mb-6;
+}
+
+.user-info-card,
+.user-stats-card {
+  @apply bg-dark-tertiary rounded-md p-4;
+}
+
+.user-info-title,
+.user-stats-title {
+  @apply text-lg font-medium text-gray-300 mb-2;
+}
+
+.user-stats-value {
+  @apply text-2xl font-bold text-white;
+}
+
+.search-input {
+  @apply px-4 py-2 bg-dark-tertiary text-white rounded-md focus:ring-2 focus:ring-brand-blue focus:border-transparent;
+  width: 100% !important;
+}

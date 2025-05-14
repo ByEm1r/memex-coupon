@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-yellow: #FCD34D;
+  --brand-orange: #FB923C;
+  --brand-blue: #60A5FA;
+  --brand-purple: #A78BFA;
+  --brand-teal: #2DD4BF;
+  --brand-pink: #F472B6;
+  --dark-primary: #0A0F1C;
+  --dark-secondary: #141B2D;
+  --dark-tertiary: #1F2937;
+  --dark-quaternary: #2D3748;
+}
+
+@layer base {
+  html {
+    @apply text-base;
+  }
+
+  body {
+    @apply font-sans bg-dark-primary text-white antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  @media (max-width: 768px) {
+    html {
+      @apply text-sm;
+    }
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-dark-secondary/80 backdrop-blur-sm border border-white/10;
+  }
+
+  .heading-gradient {
+    @apply bg-gradient-to-r from-brand-yellow to-brand-orange bg-clip-text text-transparent;
+  }
+
+  .shadow-glow {
+    @apply shadow-[0_0_20px_rgba(252,211,77,0.3)];
+  }
+
+  .shadow-glow-blue {
+    @apply shadow-[0_0_20px_rgba(96,165,250,0.3)];
+  }
+
+  .shadow-glow-purple {
+    @apply shadow-[0_0_20px_rgba(167,139,250,0.3)];
+  }
+}
+
+/* Mobile-first Media Queries */
+@media (min-width: 640px) {
+  .container {
+    @apply max-w-sm;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    @apply max-w-md;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    @apply max-w-lg;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    @apply max-w-xl;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-quaternary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-blue/50;
+}

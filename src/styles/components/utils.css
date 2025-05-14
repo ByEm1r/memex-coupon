@@ -1,0 +1,52 @@
+.flip-clock-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.flip-clock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.flip-clock-label {
+  font-size: 0.7em;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.flip-clock-value {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.collapsible-code {
+  margin-top: 0.5rem;
+}
+
+.collapsible-code-button {
+  @apply px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible-code-button-small {
+  @apply px-2 py-1 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300 text-xs;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible-code-content {
+  display: flex;
+  align-items: center;
+}
+
+.copy-code-button {
+  @apply px-2 py-1 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300 text-xs flex items-center;
+  margin-left: 0.5rem;
+}

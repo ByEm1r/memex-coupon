@@ -1,0 +1,101 @@
+/* Coupon Card */
+.coupon-card {
+  @apply bg-dark-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-dark-quaternary/20;
+  height: 450px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon-header {
+  @apply p-4 flex items-center justify-between bg-gradient-to-r from-dark-tertiary/50 to-dark-quaternary/50;
+  height: 72px; /* Fixed header height */
+}
+
+.coupon-title {
+  @apply text-lg font-bold text-white line-clamp-2 flex-1 mr-4;
+}
+
+.memex-badge {
+  @apply px-3 py-1 bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary text-sm font-bold rounded-full animate-pulse shadow-glow flex-shrink-0;
+}
+
+.coupon-image-container {
+  @apply relative;
+  height: 200px; /* Fixed image container height */
+}
+
+.coupon-image {
+  @apply w-full h-full object-cover;
+}
+
+.coupon-discount-badge {
+  @apply absolute top-4 right-4 bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary font-bold text-lg px-3 py-1 rounded-lg shadow-lg;
+}
+
+.coupon-content {
+  @apply p-4 flex flex-col;
+  height: calc(450px - 272px); /* Remaining height after header and image */
+}
+
+.coupon-description {
+  @apply text-sm text-gray-300 line-clamp-3 mb-4;
+  min-height: 48px; /* Fixed description height */
+}
+
+.coupon-code-container {
+  @apply mt-auto mb-4;
+}
+
+.coupon-code {
+  @apply font-mono text-lg text-brand-yellow bg-dark-tertiary/50 px-4 py-2 rounded-lg w-full text-center;
+}
+
+.copy-button {
+  @apply px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all duration-300 w-full mt-2;
+}
+
+.show-code-button {
+  @apply w-full px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 font-medium shadow-glow-blue;
+}
+
+.website-link {
+  @apply w-full px-4 py-2 bg-dark-tertiary text-white rounded-lg flex items-center justify-center gap-2 hover:bg-dark-quaternary transition-all duration-300 mb-4;
+}
+
+.coupon-actions {
+  @apply flex items-center justify-between pt-4 border-t border-dark-quaternary/20;
+  margin-top: auto;
+}
+
+.vote-buttons {
+  @apply flex items-center gap-2;
+}
+
+.vote-button {
+  @apply flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 shadow-sm hover:shadow-md;
+}
+
+.vote-button.like {
+  @apply bg-gradient-to-r from-green-600/20 to-green-500/20 text-green-400 hover:from-green-600/30 hover:to-green-500/30;
+}
+
+.vote-button.like.active {
+  @apply bg-gradient-to-r from-green-600 to-green-500 text-white shadow-glow;
+}
+
+.vote-button.dislike {
+  @apply bg-gradient-to-r from-red-600/20 to-red-500/20 text-red-400 hover:from-red-600/30 hover:to-red-500/30;
+}
+
+.vote-button.dislike.active {
+  @apply bg-gradient-to-r from-red-600 to-red-500 text-white shadow-glow;
+}
+
+.timer {
+  @apply flex items-center gap-2 bg-dark-tertiary/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm shadow-lg;
+  min-width: 140px; /* Fixed minimum width for timer */
+}
+
+.timer-text {
+  @apply font-mono font-bold text-white;
+}

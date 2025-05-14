@@ -1,0 +1,73 @@
+/* Auth Container */
+.auth-container {
+  @apply min-h-screen flex items-center justify-center p-4;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+}
+
+.auth-card {
+  @apply w-full max-w-md bg-dark-secondary/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/10 p-8;
+}
+
+.auth-title {
+  @apply text-3xl font-bold text-center mb-6;
+  background: linear-gradient(to right, var(--brand-yellow), var(--brand-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-subtitle {
+  @apply text-gray-400 text-center mb-8;
+}
+
+.auth-form {
+  @apply space-y-6;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-300;
+}
+
+.form-input {
+  @apply w-full px-4 py-3 bg-dark-tertiary/80 border border-white/10 rounded-lg text-white 
+    placeholder-gray-400 focus:ring-2 focus:ring-brand-yellow/50 focus:border-transparent
+    transition-all duration-300;
+}
+
+.auth-submit {
+  @apply w-full py-3 px-4 rounded-lg font-medium shadow-lg
+    transition-all duration-300 transform hover:-translate-y-0.5
+    disabled:opacity-50 disabled:cursor-not-allowed
+    flex items-center justify-center gap-2
+    bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary;
+}
+
+.auth-switch {
+  @apply text-brand-blue hover:text-brand-purple transition-colors text-center block w-full mt-4;
+}
+
+.auth-footer {
+  @apply mt-8 pt-6 border-t border-white/10 text-center;
+}
+
+.auth-footer-links {
+  @apply flex justify-center space-x-4 text-sm text-gray-400;
+}
+
+.auth-footer-link {
+  @apply hover:text-white transition-colors;
+}
+
+.forgot-password-link {
+  @apply text-right block text-sm text-brand-blue hover:text-brand-purple transition-colors mt-2;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .auth-card {
+    @apply p-12;
+  }
+}

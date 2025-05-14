@@ -1,0 +1,234 @@
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Header */
+  .profile-header {
+    @apply p-4;
+  }
+
+  .profile-info {
+    @apply flex-col items-start;
+  }
+
+  .profile-name {
+    @apply text-2xl;
+  }
+
+  .profile-actions {
+    @apply w-full justify-start;
+  }
+
+  /* Stats */
+  .profile-stats {
+    @apply grid-cols-2 gap-4;
+  }
+
+  .stat-card {
+    @apply p-4;
+  }
+
+  .stat-value {
+    @apply text-xl;
+  }
+
+  /* Navigation */
+  .nav-button {
+    @apply px-3 py-2 text-sm;
+  }
+
+  /* Content */
+  .content-card {
+    @apply p-4;
+  }
+
+  .content-grid {
+    @apply grid-cols-1;
+  }
+
+  /* Forms */
+  .form-container {
+    @apply p-4;
+  }
+
+  .form-grid {
+    @apply grid-cols-1;
+  }
+
+  /* Admin Panel */
+  .admin-dashboard {
+    @apply p-4;
+  }
+
+  .admin-header {
+    @apply flex-col items-start;
+  }
+
+  .admin-title {
+    @apply text-2xl;
+  }
+
+  .admin-stats {
+    @apply grid-cols-1;
+  }
+
+  .admin-toolbar {
+    @apply flex-col;
+  }
+
+  .search-filter {
+    @apply w-full;
+  }
+
+  .search-box input {
+    @apply w-full;
+  }
+
+  .filter-select {
+    @apply w-full;
+  }
+
+  /* Tables */
+  .coupon-table,
+  .member-table {
+    @apply overflow-x-auto;
+  }
+
+  table {
+    @apply min-w-[600px];
+  }
+
+  th, td {
+    @apply px-3 py-2 text-xs;
+  }
+
+  /* Auth */
+  .auth-content {
+    @apply grid-cols-1;
+  }
+
+  .auth-form-section,
+  .payment-section {
+    @apply p-4;
+  }
+
+  .auth-title {
+    @apply text-2xl;
+  }
+
+  .auth-form-grid {
+    @apply grid-cols-1;
+  }
+
+  /* Coupon Cards */
+  .coupon-card {
+    @apply h-auto min-h-[400px];
+  }
+
+  .coupon-header {
+    @apply h-auto min-h-[60px];
+  }
+
+  .coupon-title {
+    @apply text-base;
+  }
+
+  .coupon-image-container {
+    @apply h-[150px];
+  }
+
+  .coupon-content {
+    @apply h-auto;
+  }
+
+  .coupon-description {
+    @apply text-xs;
+  }
+
+  .coupon-code {
+    @apply text-sm;
+  }
+
+  /* Bottom Navigation */
+  .mobile-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-dark-secondary border-t border-dark-quaternary/20 z-50;
+  }
+
+  .mobile-nav-content {
+    @apply flex justify-around items-center py-2 px-4;
+  }
+
+  .mobile-nav-button {
+    @apply flex flex-col items-center justify-center p-2;
+  }
+
+  .mobile-nav-button span {
+    @apply text-xs mt-1;
+  }
+
+  /* Main Content Padding */
+  .main-content {
+    @apply pb-16; /* Add padding for bottom navigation */
+  }
+
+  /* Filters */
+  .filters-section {
+    @apply flex-col;
+  }
+
+  .filter-group {
+    @apply w-full;
+  }
+
+  /* Showcase */
+  .showcase-section {
+    @apply p-4;
+  }
+
+  .showcase-nav-button {
+    @apply hidden;
+  }
+
+  .showcase-grid {
+    @apply gap-3;
+  }
+
+  .showcase-item {
+    @apply w-[280px];
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .profile-name {
+    @apply text-xl;
+  }
+
+  .stat-value {
+    @apply text-lg;
+  }
+
+  .coupon-card {
+    @apply min-h-[350px];
+  }
+
+  .coupon-image-container {
+    @apply h-[120px];
+  }
+
+  .showcase-item {
+    @apply w-[240px];
+  }
+
+  .admin-tab {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .action-buttons {
+    @apply flex-col items-start gap-1;
+  }
+
+  .status-button,
+  .edit-button,
+  .delete-button {
+    @apply w-full justify-center;
+  }
+}

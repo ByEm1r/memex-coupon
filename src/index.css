@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-dark-primary text-dark-text antialiased;
+    background-image: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.05) 0%, rgba(167, 139, 250, 0.05) 25%, rgba(45, 212, 191, 0.05) 50%, transparent 100%);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-quaternary rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-blue/50;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-dark-secondary/80 backdrop-blur-glass border border-white/10 shadow-glass;
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-brand-blue to-brand-purple text-white shadow-glow-blue hover:shadow-glow-purple;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-tertiary text-white hover:bg-dark-quaternary border border-white/10;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 bg-dark-tertiary/80 border border-white/10 rounded-lg text-white placeholder-gray-400 
+    focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-transparent transition duration-300;
+  }
+
+  .nav-button {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg text-white hover:bg-dark-tertiary/50 transition-colors duration-200;
+  }
+
+  .nav-button.active {
+    @apply bg-gradient-to-r from-brand-blue/20 to-brand-purple/20 text-white;
+  }
+
+  .heading-gradient {
+    @apply bg-gradient-to-r from-brand-blue via-brand-purple to-brand-teal bg-clip-text text-transparent;
+  }
+
+  .coupon-card {
+    @apply bg-dark-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-dark-quaternary/20;
+  }
+
+  .coupon-header {
+    @apply p-4 flex items-center justify-between;
+  }
+
+  .coupon-title {
+    @apply text-lg font-bold text-white;
+  }
+
+  .memex-badge {
+    @apply px-3 py-1 bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary text-sm font-bold rounded-full;
+  }
+
+  .search-container {
+    @apply relative flex-1;
+  }
+
+  .search-input {
+    @apply w-full pl-10 pr-4 py-2 bg-dark-tertiary/80 border border-white/10 rounded-lg text-white placeholder-gray-400
+    focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-transparent;
+  }
+
+  .filter-container {
+    @apply flex gap-4;
+  }
+
+  .filter-select {
+    @apply bg-dark-tertiary/80 border border-white/10 rounded-lg text-white px-4 py-2
+    focus:outline-none focus:ring-2 focus:ring-brand-blue/50 focus:border-transparent;
+  }
+}

@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Dark blue background */
+}
+
+.nav-button {
+  @apply px-4 py-2 bg-dark-tertiary text-white rounded-md hover:bg-brand-blue transition duration-300 flex items-center mr-2;
+}
+
+.nav-button.active {
+  @apply bg-brand-yellow text-dark-primary font-bold;
+}
+
+.admin-login-button {
+  @apply px-4 py-2 bg-brand-blue text-white rounded-md hover:bg-blue-600 transition duration-300 flex items-center mr-2;
+}
+
+.logout-button {
+  @apply px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-300 mr-2;
+}
+
+.form-container {
+  @apply bg-dark-secondary rounded-lg shadow-md p-8 mb-8;
+}
+
+.form-title {
+  @apply text-2xl font-semibold text-white mb-6;
+}
+
+.form-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.form-input,
+.form-textarea {
+  @apply px-4 py-2 bg-dark-tertiary text-white rounded-md focus:ring-2 focus:ring-brand-blue focus:border-transparent w-full;
+}
+
+.form-textarea {
+  @apply resize-none;
+}
+
+.form-image-preview {
+  @apply mt-4 max-h-40 rounded-md;
+}
+
+.form-submit-button {
+  @apply px-6 py-3 bg-brand-blue text-white rounded-md hover:bg-blue-600 transition duration-300 flex items-center;
+}
+
+.form-cancel-button {
+  @apply px-6 py-3 bg-dark-tertiary text-white rounded-md hover:bg-gray-600 transition duration-300 flex items-center;
+}
+
+.admin-panel {
+  @apply bg-dark-secondary rounded-lg shadow-md p-6 mb-8;
+}
+
+.admin-panel-title {
+  @apply text-xl font-semibold text-white mb-4;
+}
+
+.admin-summary-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+}
+
+.admin-summary-card {
+  @apply bg-dark-tertiary rounded-md p-4;
+}
+
+.admin-summary-title {
+  @apply text-lg font-medium text-gray-300;
+}
+
+.admin-summary-value {
+  @apply text-2xl font-bold text-white;
+}
+
+.admin-table {
+  @apply min-w-full divide-y divide-dark-tertiary;
+}
+
+.admin-table-header {
+  @apply bg-dark-tertiary;
+}
+
+.admin-table-header-cell {
+  @apply px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider;
+}
+
+.admin-table-body {
+  @apply bg-dark-primary divide-y divide-dark-tertiary;
+}
+
+.admin-table-row {
+  @apply hover:bg-dark-tertiary transition duration-200;
+}
+
+.admin-table-cell {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-white;
+}
+
+.admin-table-image {
+  @apply h-10 w-10 rounded-full;
+}
+
+.admin-table-approve-button {
+  @apply px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.admin-table-actions {
+  @apply text-right;
+}
+
+.coupon-card {
+  @apply bg-dark-secondary rounded-lg shadow-md overflow-hidden relative flex flex-col items-center;
+  margin-bottom: 1rem;
+}
+
+.coupon-card-content {
+  @apply p-4 w-full;
+}
+
+.coupon-title {
+  @apply text-xl font-semibold text-white mb-2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 3.2em; /* Approximately 2 lines of text */
+  line-height: 1.6;
+}
+
+.coupon-description {
+  @apply text-gray-300 mb-4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  height: 4.5em; /* Approximately 3 lines of text */
+  line-height: 1.5;
+}
+
+.coupon-code-container {
+  @apply flex justify-between items-center;
+}
+
+.coupon-code-label {
+  @apply text-sm text-gray-400;
+}
+
+.coupon-code {
+  @apply text-sm font-bold text-brand-yellow;
+}
+
+.coupon-discount-container {
+  @apply flex items-center;
+}
+
+.coupon-discount-label {
+  @apply text-sm text-gray-400 mr-2;
+}
+
+.coupon-discount {
+  @apply text-sm font-bold text-green-500;
+  font-size: 2em;
+}
+
+.coupon-image {
+  @apply w-full h-48 object-cover;
+}
+
+.search-input {
+  @apply px-4 py-2 bg-dark-tertiary text-white rounded-md focus:ring-2 focus:ring-brand-blue focus:border-transparent;
+  width: 100% !important;
+}
+
+.coupon-banner {
+  @apply w-full h-auto mb-6;
+  object-fit: contain;
+  max-height: none;
+  width: 100%;
+}
+
+.coupon-banner.loading {
+  @apply bg-gray-700 animate-pulse;
+}
+
+.coupon-banner.loaded {
+  @apply bg-transparent;
+}
+
+.grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3.gap-6 {
+  margin-top: 1rem;
+}
+
+@media (max-width: 767px) {
+  .admin-summary-grid {
+    @apply grid-cols-1;
+  }
+
+  .admin-table {
+    @apply overflow-x-scroll;
+  }
+
+  .admin-table-header-cell,
+  .admin-table-cell {
+    @apply px-3 py-2 text-xs;
+  }
+
+  .coupon-card {
+    margin-bottom: 0.5rem;
+  }
+
+  .coupon-title {
+    @apply text-lg;
+    height: 2.8em;
+  }
+
+  .coupon-description {
+    @apply text-sm;
+    height: 4.2em;
+  }
+
+  .coupon-code {
+    @apply text-sm;
+  }
+
+  .coupon-discount {
+    @apply text-sm;
+  }
+
+  .flex.items-center {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .flex.items-center > * {
+    margin-bottom: 0.5rem;
+  }
+
+  .flex.items-center > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .max-w-4xl.mx-auto.px-4.sm\:px-6.lg\:px-8 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .admin-table-actions {
+    text-align: left;
+  }
+}
+
+.user-info-summary {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4 mb-6;
+}
+
+.user-info-card,
+.user-stats-card {
+  @apply bg-dark-tertiary rounded-md p-4;
+}
+
+.user-info-title,
+.user-stats-title {
+  @apply text-lg font-medium text-gray-300 mb-2;
+}
+
+.user-stats-value {
+  @apply text-2xl font-bold text-white;
+}
+
+.user-edit-button {
+  @apply px-4 py-2 bg-brand-blue text-white rounded-md hover:bg-blue-600 transition duration-300;
+}
+
+.add-coupon-button {
+  @apply px-6 py-3 bg-green-500 text-white rounded-md hover:bg-green-600 transition duration-300 mb-4;
+}
+
+.add-coupon-form {
+  @apply mt-4;
+}
+
+.coupon-actions {
+  @apply absolute top-2 left-2 flex;
+}
+
+.coupon-edit-button,
+.coupon-delete-button {
+  @apply px-2 py-1 bg-white bg-opacity-20 hover:bg-opacity-40 rounded-md text-sm text-white transition duration-200 mr-1;
+}
+
+.flip-clock-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.flip-clock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.flip-clock-label {
+  font-size: 0.7em;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.flip-clock-value {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.collapsible-code {
+  margin-top: 0.5rem;
+}
+
+.collapsible-code-button {
+  @apply px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible-code-button-small {
+  @apply px-2 py-1 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300 text-xs;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible-code-content {
+  display: flex;
+  align-items: center;
+}
+
+.copy-code-button {
+  @apply px-2 py-1 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition duration-300 text-xs flex items-center;
+  margin-left: 0.5rem;
+}
+
+.auth-page-container {
+  @apply flex justify-center space-x-8;
+  padding: 2rem;
+}
+
+.auth-container {
+  @apply bg-dark-secondary rounded-lg shadow-md p-8 w-full max-w-md;
+}
+
+.auth-title {
+  @apply text-2xl font-semibold text-white mb-6 text-center;
+}
+
+.auth-form {
+  @apply space-y-4;
+}
+
+.auth-input {
+  @apply px-4 py-2 bg-dark-tertiary text-white rounded-md focus:ring-2 focus:ring-brand-blue focus:border-transparent w-full;
+}
+
+.auth-input-wrapper {
+  @apply relative;
+}
+
+.auth-toggle-password {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 bg-transparent border-none cursor-pointer;
+}
+
+.auth-submit-button {
+  @apply px-6 py-3 bg-brand-blue text-white rounded-md hover:bg-blue-600 transition duration-300 w-full;
+}
+
+.coupon-card .coupon-button {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.coupon-card .coupon-button:hover {
+  background-color: #555;
+}
+
+.coupon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-table .admin-input {
+  background-color: #333;
+  color: white;
+}
+
+/* Payment Info Styles */
+.payment-info {
+  @apply mt-4 p-4 rounded-md bg-dark-tertiary;
+}
+
+.payment-qr-code {
+  @apply w-48 h-48 mx-auto mb-2;
+}
+
+.payment-address {
+  @apply text-sm text-gray-400 break-all;
+}
+
+.payment-made-label {
+  @apply flex items-center mt-2 text-white;
+}
+
+.payment-made-checkbox {
+  @apply mr-2 leading-tight;
+}
+
+/* Pagination Styles */
+.pagination-link.active {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}

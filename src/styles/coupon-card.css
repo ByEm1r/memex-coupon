@@ -1,0 +1,93 @@
+/* Coupon Card */
+.coupon-card {
+  @apply bg-dark-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-dark-quaternary/20;
+  height: 450px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon-header {
+  @apply p-4 flex items-center justify-between bg-gradient-to-r from-dark-tertiary/50 to-dark-quaternary/50;
+  height: 72px; /* Fixed header height */
+}
+
+.coupon-title {
+  @apply text-lg font-bold text-white line-clamp-2 flex-1 mr-4;
+}
+
+.memex-badge {
+  @apply px-3 py-1 bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary text-sm font-bold rounded-full animate-pulse shadow-glow flex-shrink-0;
+}
+
+.coupon-image-container {
+  @apply relative;
+  height: 200px; /* Fixed image container height */
+}
+
+.coupon-image {
+  @apply w-full h-full object-cover;
+}
+
+.share-button {
+  @apply p-2 rounded-full bg-dark-tertiary/90 backdrop-blur-sm text-white hover:bg-dark-quaternary/90 transition-colors duration-300;
+}
+
+.share-menu {
+  @apply absolute left-0 top-full mt-2 bg-dark-tertiary/95 backdrop-blur-sm rounded-lg py-2 
+    border border-white/10 shadow-xl z-50 min-w-[150px];
+}
+
+.share-option {
+  @apply flex items-center gap-3 px-4 py-2 w-full text-left text-white hover:bg-dark-quaternary/50 
+    transition-colors duration-200;
+}
+
+.share-option span {
+  @apply text-sm font-medium;
+}
+
+.coupon-discount-badge {
+  @apply absolute top-4 right-4 bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary font-bold text-lg px-3 py-1 rounded-lg shadow-lg;
+}
+
+.coupon-content {
+  @apply p-4 flex flex-col flex-grow;
+}
+
+.coupon-description {
+  @apply text-sm text-gray-300 line-clamp-3 mb-4;
+  min-height: 48px; /* Fixed description height */
+}
+
+.coupon-code-container {
+  @apply w-full;
+}
+
+.coupon-code {
+  @apply font-mono text-lg text-brand-yellow bg-dark-tertiary/50 px-4 py-2 rounded-lg text-center;
+}
+
+.copy-button {
+  @apply px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all duration-300 w-full mt-2;
+}
+
+.copy-button-inline {
+  @apply p-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg flex items-center justify-center hover:opacity-90 transition-all duration-300;
+}
+
+.show-code-button {
+  @apply w-full px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 font-medium shadow-glow-blue;
+}
+
+.website-link {
+  @apply w-full px-4 py-2 bg-dark-tertiary text-white rounded-lg flex items-center justify-center gap-2 hover:bg-dark-quaternary transition-all duration-300;
+}
+
+.timer {
+  @apply absolute bottom-4 right-4 flex items-center gap-2 bg-dark-tertiary/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm shadow-lg;
+  min-width: 120px;
+}
+
+.timer-text {
+  @apply font-mono font-medium text-white;
+}

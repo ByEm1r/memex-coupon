@@ -1,0 +1,60 @@
+.nav-button {
+  @apply px-6 py-3 bg-gradient-to-r from-dark-tertiary to-dark-quaternary text-white rounded-lg hover:from-brand-blue hover:to-brand-purple transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.nav-button.active {
+  @apply bg-gradient-to-r from-brand-yellow to-brand-orange text-dark-primary font-bold shadow-lg;
+}
+
+.admin-login-button {
+  @apply px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.logout-button {
+  @apply px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.form-submit-button {
+  @apply px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.form-cancel-button {
+  @apply px-6 py-3 bg-gradient-to-r from-dark-tertiary to-dark-quaternary text-white rounded-lg hover:opacity-90 transition-all duration-300 flex items-center gap-2;
+}
+
+.user-edit-button {
+  @apply px-4 py-2 bg-gradient-to-r from-brand-teal to-brand-blue text-white rounded-lg hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg;
+}
+
+.add-coupon-button {
+  @apply px-6 py-3 bg-gradient-to-r from-brand-teal to-brand-blue text-white rounded-lg hover:opacity-90 transition-all duration-300 mb-4 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.coupon-edit-button,
+.coupon-delete-button {
+  @apply px-3 py-1.5 rounded-lg text-sm text-white transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.coupon-edit-button {
+  @apply bg-gradient-to-r from-brand-blue to-brand-purple;
+}
+
+.coupon-delete-button {
+  @apply bg-gradient-to-r from-red-500 to-red-600;
+}
+
+.auth-submit-button {
+  @apply px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 w-full shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+}
+
+.mobile-nav-button {
+  @apply flex flex-col items-center justify-center gap-1 px-4 py-2 rounded-lg bg-gradient-to-b from-dark-tertiary to-dark-quaternary hover:from-brand-blue hover:to-brand-purple transition-all duration-300;
+}
+
+.mobile-nav-button.active {
+  @apply bg-gradient-to-b from-brand-yellow to-brand-orange text-dark-primary;
+}
+
+.green-button {
+  @apply bg-gradient-to-r from-green-500 to-brand-teal hover:opacity-90;
+}
