@@ -54,7 +54,7 @@ const categories = [
   'Food', 'Electronics', 'Clothing', 'Travel', 'Home & Garden', 'Beauty', 'Sports & Outdoors',
   'Books', 'Movies & Music', 'Toys & Games', 'Health & Personal Care', 'Automotive', 'Baby',
   'Pet Supplies', 'Office Supplies', 'School Supplies', 'Arts & Crafts', 'Industrial & Scientific',
-  'Crypto', 'Other'
+  'Crypto','Casino', 'Other'
 ];
 
 const countries = [

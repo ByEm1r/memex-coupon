@@ -34,6 +34,7 @@ const Home: React.FC = () => {
   const [availableBrands, setAvailableBrands] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [user, setUser] = useState<any>(null);
+  const [restrictedCategories, setRestrictedCategories] = useState<string[]>([]);
   const showcaseRef = useRef<HTMLDivElement>(null);
 
   const showcaseLimit = 9;
@@ -52,6 +53,30 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
+    const checkGeoRestrictions = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/geo-check`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setRestrictedCategories(data.restrictedCategories || []);
+      } catch (error) {
+        console.error('Error checking geo-restrictions:', error);
+        // Set empty restrictions on error to avoid blocking all content
+        setRestrictedCategories([]);
+      }
+    };
+
+    checkGeoRestrictions();
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -95,14 +120,24 @@ const Home: React.FC = () => {
   };
 
   const filteredRegularCoupons = React.useMemo(() =>
-          regularCoupons.filter(coupon =>
-              (coupon.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                  coupon.description?.toLowerCase().includes(searchTerm.toLowerCase())) &&
-              (selectedCategory === '' || coupon.category === selectedCategory) &&
-              (selectedCountry === '' || coupon.country === selectedCountry) &&
-              (selectedBrand === '' || coupon.brand === selectedBrand)
-          ),
-      [regularCoupons, searchTerm, selectedCategory, selectedCountry, selectedBrand]
+          regularCoupons.filter(coupon => {
+            const matchesSearch = (
+                coupon.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                coupon.description?.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            const matchesCategory = selectedCategory === '' || coupon.category === selectedCategory;
+            const matchesCountry = selectedCountry === '' || coupon.country === selectedCountry;
+            const matchesBrand = selectedBrand === '' || coupon.brand === selectedBrand;
+
+            // Geo-restriction check
+            const isRestricted = restrictedCategories.includes(coupon.category || '');
+            if (isRestricted) {
+              return false;
+            }
+
+            return matchesSearch && matchesCategory && matchesCountry && matchesBrand;
+          }),
+      [regularCoupons, searchTerm, selectedCategory, selectedCountry, selectedBrand, restrictedCategories]
   );
 
   const totalPages = Math.ceil(filteredRegularCoupons.length / regularPerPage);
@@ -188,9 +223,10 @@ const Home: React.FC = () => {
                 {[
                   'Electronics', 'Fashion', 'Food', 'Travel', 'Entertainment',
                   'Home & Garden', 'Sports', 'Beauty', 'Books', 'Other'
-                ].map(category => (
-                    <option key={category} value={category}>{category}</option>
-                ))}
+                ].filter(category => !restrictedCategories.includes(category))
+                    .map(category => (
+                        <option key={category} value={category}>{category}</option>
+                    ))}
               </select>
             </div>
 
