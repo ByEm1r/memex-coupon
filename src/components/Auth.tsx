@@ -12,9 +12,6 @@ interface AuthProps {
   setIsAdmin: (isAdmin: boolean) => void;
 }
 
-const ADMIN_EMAIL = "admin@memex.com";
-const ADMIN_PASSWORD = "admin123";
-
 const countries = [
   'All Countries',
   'USA', 'Canada', 'UK', 'Germany', 'France', 'Turkey', 'Australia', 'Japan',
@@ -40,7 +37,7 @@ const Auth: React.FC<AuthProps> = ({ type, setActiveTab, setUser, setIsAdmin }) 
     showPassword: false,
     paymentMade: false,
     termsAccepted: false,
-    transactionHash: '' // Add transaction hash field
+    transactionHash: ''
   });
 
   const [qrCode, setQrCode] = useState('');
@@ -174,7 +171,7 @@ const Auth: React.FC<AuthProps> = ({ type, setActiveTab, setUser, setIsAdmin }) 
           is_admin: false,
           terms_accepted: true,
           terms_accepted_at: new Date().toISOString(),
-          transaction_hash: formData.transactionHash // Save transaction hash
+          transaction_hash: formData.transactionHash
         }]);
 
         if (error) throw error;
@@ -194,9 +191,9 @@ const Auth: React.FC<AuthProps> = ({ type, setActiveTab, setUser, setIsAdmin }) 
         });
       } else {
         // Check for admin login
-        if (formData.email === ADMIN_EMAIL && formData.password === ADMIN_PASSWORD) {
+        if (formData.email === import.meta.env.VITE_ADMIN_EMAIL && formData.password === import.meta.env.VITE_ADMIN_PASSWORD) {
           const adminUser = {
-            email: ADMIN_EMAIL,
+            email: import.meta.env.VITE_ADMIN_EMAIL,
             is_admin: true,
             isAdmin: true
           };
@@ -574,6 +571,7 @@ const Auth: React.FC<AuthProps> = ({ type, setActiveTab, setUser, setIsAdmin }) 
                               onChange={handleInputChange}
                               className="w-full pl-10 pr-4 py-3 bg-dark-primary rounded-lg text-brand-blue font-mono text-sm border border-white/10 focus:ring-2 focus:ring-brand-blue focus:border-transparent"
                               placeholder="Enter your transaction hash"
+                              required={formData.paymentMade}
                           />
                         </div>
                       </div>

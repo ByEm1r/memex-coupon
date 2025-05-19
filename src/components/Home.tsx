@@ -222,7 +222,7 @@ const Home: React.FC = () => {
                 <option value="">All Categories</option>
                 {[
                   'Electronics', 'Fashion', 'Food', 'Travel', 'Entertainment',
-                  'Home & Garden', 'Sports', 'Beauty', 'Books', 'Other'
+                  'Home & Garden', 'Sports', 'Beauty', 'Books', 'E-Commerce', 'Other'
                 ].filter(category => !restrictedCategories.includes(category))
                     .map(category => (
                         <option key={category} value={category}>{category}</option>
