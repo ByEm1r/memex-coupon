@@ -311,16 +311,11 @@ const Home: React.FC = () => {
               <p className="text-gray-400">We're here to assist you with any questions or concerns</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 bg-dark-tertiary/50 p-6 rounded-lg">
+          <div className="need-help-section">
             <Mail className="w-5 h-5 text-brand-yellow" />
-            <a
-                href="mailto:coupon@memextoken.org"
-                className="text-brand-yellow hover:text-brand-orange transition-colors font-medium"
-            >
-              coupon@memextoken.org
-            </a>
+            <a href="mailto:coupon@memextoken.org">coupon@memextoken.org</a>
             <span className="text-gray-400">•</span>
-            <span className="text-gray-400">Available 24/7</span>
+            <span className="available-text">Available 24/7</span>
           </div>
         </div>
       </div>

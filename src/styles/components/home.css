@@ -1,7 +1,7 @@
 /* Hero Banner */
 .hero-banner {
-  @apply bg-gradient-to-r from-dark-secondary/90 to-dark-tertiary/90 rounded-2xl p-12 mb-8 
-    border border-white/10 shadow-xl backdrop-blur-sm relative overflow-hidden;
+  @apply bg-gradient-to-r from-dark-secondary/90 to-dark-tertiary/90 rounded-2xl p-12 mb-8
+  border border-white/10 shadow-xl backdrop-blur-sm relative overflow-hidden;
   background-image: url('https://images.pexels.com/photos/518244/pexels-photo-518244.jpeg?auto=compress&cs=tinysrgb&w=1920');
   background-size: cover;
   background-position: center;
@@ -42,8 +42,8 @@
 
 .showcase-nav-button {
   @apply absolute top-1/2 -translate-y-1/2 z-10 bg-dark-tertiary/90 text-white rounded-full p-2
-    hover:bg-dark-quaternary/90 transition-all duration-300 shadow-lg backdrop-blur-sm
-    border border-white/10;
+  hover:bg-dark-quaternary/90 transition-all duration-300 shadow-lg backdrop-blur-sm
+  border border-white/10;
 }
 
 .showcase-nav-button.left {
@@ -95,8 +95,8 @@
 
 /* Filters Section */
 .filters-section {
-  @apply bg-dark-secondary/80 backdrop-blur-sm rounded-xl p-6 border border-white/10 
-    flex flex-col md:flex-row gap-4 items-center justify-between shadow-lg my-8;
+  @apply bg-dark-secondary/80 backdrop-blur-sm rounded-xl p-6 border border-white/10
+  flex flex-col md:flex-row gap-4 items-center justify-between shadow-lg my-8;
 }
 
 .search-container {
@@ -109,8 +109,8 @@
 
 .search-input {
   @apply w-full pl-12 pr-4 py-3 bg-dark-tertiary/80 rounded-lg border border-white/10
-    text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-yellow/50 focus:border-transparent
-    transition-all duration-300;
+  text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-yellow/50 focus:border-transparent
+  transition-all duration-300;
 }
 
 .filter-container {
@@ -118,17 +118,17 @@
 }
 
 .filter-group {
-  @apply relative;
+  @apply relative flex items-center;
 }
 
 .filter-icon {
-  @apply absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400;
+  @apply mr-2 text-gray-400;
 }
 
 .filter-select {
-  @apply pl-12 pr-4 py-3 bg-dark-tertiary/80 rounded-lg border border-white/10
-    text-white focus:ring-2 focus:ring-brand-yellow/50 focus:border-transparent
-    transition-all duration-300 cursor-pointer;
+  @apply pl-4 pr-4 py-3 bg-dark-tertiary/80 rounded-lg border border-white/10
+  text-white focus:ring-2 focus:ring-brand-yellow/50 focus:border-transparent
+  transition-all duration-300 cursor-pointer;
   min-width: 200px;
 }
 
@@ -138,7 +138,7 @@
 }
 
 .regular-coupons-grid {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
 }
 
 .regular-coupon-item {
@@ -154,8 +154,8 @@
 
 .pagination-button {
   @apply px-4 py-2 rounded-lg bg-dark-tertiary hover:bg-dark-quaternary
-    transition-all duration-300 text-white font-medium shadow-md hover:shadow-lg
-    transform hover:-translate-y-0.5;
+  transition-all duration-300 text-white font-medium shadow-md hover:shadow-lg
+  transform hover:-translate-y-0.5;
 }
 
 .pagination-button.active {
@@ -165,11 +165,25 @@
 /* Loading and No Results */
 .loading-spinner {
   @apply w-12 h-12 border-4 border-dark-quaternary border-t-brand-yellow
-    rounded-full animate-spin mx-auto;
+  rounded-full animate-spin mx-auto;
 }
 
 .no-results {
   @apply text-center py-12 text-gray-400;
+}
+
+/* Need Help Section */
+.need-help-section {
+  @apply flex items-center gap-3 bg-dark-tertiary/50 p-6 rounded-lg;
+}
+
+.need-help-section a {
+  @apply text-brand-yellow hover:text-brand-orange transition-colors font-medium;
+  white-space: nowrap;
+}
+
+.need-help-section .available-text {
+  @apply text-gray-400 whitespace-nowrap;
 }
 
 /* Responsive Design */
@@ -198,10 +212,6 @@
     @apply w-full;
   }
 
-  .regular-coupons-grid {
-    @apply grid-cols-2;
-  }
-
   .showcase-nav-button {
     @apply p-1;
   }
@@ -218,5 +228,13 @@
 @media (max-width: 640px) {
   .regular-coupons-grid {
     @apply grid-cols-1;
+  }
+
+  .need-help-section {
+    @apply flex-col items-start;
+  }
+
+  .need-help-section .available-text {
+    @apply block;
   }
 }
