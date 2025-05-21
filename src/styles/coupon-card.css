@@ -1,14 +1,18 @@
 /* Coupon Card */
 .coupon-card {
   @apply bg-dark-secondary rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-dark-quaternary/20;
-  height: 450px; /* Fixed height */
+  height: 450px;
   display: flex;
   flex-direction: column;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
 }
 
 .coupon-header {
   @apply p-4 flex items-center justify-between bg-gradient-to-r from-dark-tertiary/50 to-dark-quaternary/50;
-  height: 72px; /* Fixed header height */
+  height: 72px;
 }
 
 .coupon-title {
@@ -21,29 +25,13 @@
 
 .coupon-image-container {
   @apply relative;
-  height: 200px; /* Fixed image container height */
+  height: 200px;
 }
 
 .coupon-image {
   @apply w-full h-full object-cover;
-}
-
-.share-button {
-  @apply p-2 rounded-full bg-dark-tertiary/90 backdrop-blur-sm text-white hover:bg-dark-quaternary/90 transition-colors duration-300;
-}
-
-.share-menu {
-  @apply absolute left-0 top-full mt-2 bg-dark-tertiary/95 backdrop-blur-sm rounded-lg py-2 
-    border border-white/10 shadow-xl z-50 min-w-[150px];
-}
-
-.share-option {
-  @apply flex items-center gap-3 px-4 py-2 w-full text-left text-white hover:bg-dark-quaternary/50 
-    transition-colors duration-200;
-}
-
-.share-option span {
-  @apply text-sm font-medium;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .coupon-discount-badge {
@@ -56,11 +44,14 @@
 
 .coupon-description {
   @apply text-sm text-gray-300 line-clamp-3 mb-4;
-  min-height: 48px; /* Fixed description height */
+}
+
+.coupon-footer {
+  @apply mt-auto flex items-center gap-4;
 }
 
 .coupon-code-container {
-  @apply w-full;
+  @apply flex-1;
 }
 
 .coupon-code {
@@ -76,11 +67,11 @@
 }
 
 .show-code-button {
-  @apply w-full px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 font-medium shadow-glow-blue;
+  @apply flex-1 px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300 font-medium shadow-glow-blue text-center;
 }
 
 .website-link {
-  @apply w-full px-4 py-2 bg-dark-tertiary text-white rounded-lg flex items-center justify-center gap-2 hover:bg-dark-quaternary transition-all duration-300;
+  @apply flex-1 px-4 py-2 bg-dark-tertiary text-white rounded-lg flex items-center justify-center gap-2 hover:bg-dark-quaternary transition-all duration-300;
 }
 
 .timer {
@@ -90,4 +81,44 @@
 
 .timer-text {
   @apply font-mono font-medium text-white;
+}
+
+.share-button {
+  @apply p-2 rounded-full bg-dark-tertiary/90 backdrop-blur-sm text-white hover:bg-dark-quaternary/90 transition-colors duration-300;
+}
+
+.share-menu {
+  @apply absolute left-0 top-full mt-2 bg-dark-tertiary/95 backdrop-blur-sm rounded-lg py-2
+  border border-white/10 shadow-xl z-50 min-w-[150px];
+}
+
+.share-option {
+  @apply flex items-center gap-3 px-4 py-2 w-full text-left text-white hover:bg-dark-quaternary/50
+  transition-colors duration-200;
+}
+
+.share-option span {
+  @apply text-sm font-medium;
+}
+
+/* Performance optimizations */
+.regular-coupons-grid {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.regular-coupon-item {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce repaints */
+.coupon-image,
+.coupon-title,
+.coupon-description,
+.coupon-code,
+.timer-text {
+  transform: translateZ(0);
 }

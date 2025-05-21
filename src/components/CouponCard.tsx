@@ -1,5 +1,5 @@
 import React, { useState, useEffect, memo } from 'react';
-import { supabase, checkAuth } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 import { toast } from 'react-hot-toast';
 import { Clock, Copy, ExternalLink, Share2, Twitter, Facebook, Linkedin, MessageCircle } from 'lucide-react';
 
@@ -18,6 +18,7 @@ interface CouponCardProps {
     category?: string;
     country: string;
     brand?: string;
+    currency?: string;
   };
   user?: {
     id: string;
@@ -25,6 +26,15 @@ interface CouponCardProps {
     isAdmin?: boolean;
   } | null;
 }
+
+const CurrencySymbols: Record<string, string> = {
+  'USD': '$',
+  'EUR': '€',
+  'GBP': '£',
+  'TRY': '₺',
+  'JPY': '¥',
+  'MEMEX': 'MEMEX'
+};
 
 const CouponCard: React.FC<CouponCardProps> = ({ coupon, user }) => {
   const [showCode, setShowCode] = useState(false);
@@ -54,7 +64,6 @@ const CouponCard: React.FC<CouponCardProps> = ({ coupon, user }) => {
     return () => clearInterval(timer);
   }, [coupon.validity_date]);
 
-  // Close share menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
@@ -102,7 +111,7 @@ const CouponCard: React.FC<CouponCardProps> = ({ coupon, user }) => {
   };
 
   return (
-      <div className="coupon-card">
+      <div className="coupon-card will-change-transform">
         <div className="coupon-header">
           <h3 className="coupon-title">{coupon.title}</h3>
           {coupon.memex_payment && (
@@ -154,7 +163,9 @@ const CouponCard: React.FC<CouponCardProps> = ({ coupon, user }) => {
           </div>
           {(coupon.fixed_discount || coupon.percentage_discount) && (
               <div className="coupon-discount-badge">
-                {coupon.fixed_discount ? `$${coupon.fixed_discount} OFF` : `${coupon.percentage_discount}% OFF`}
+                {coupon.fixed_discount
+                    ? `${coupon.fixed_discount} ${CurrencySymbols[coupon.currency || 'MEMEX']} OFF`
+                    : `${coupon.percentage_discount}% OFF`}
               </div>
           )}
           <div className="timer">
@@ -167,9 +178,9 @@ const CouponCard: React.FC<CouponCardProps> = ({ coupon, user }) => {
           <p className="coupon-description">{coupon.description}</p>
 
           <div className="flex flex-col gap-4 mt-auto">
-            <div className="coupon-code-container">
+            <div className="flex gap-2">
               {showCode ? (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-1">
                     <div className="coupon-code flex-grow">{coupon.code}</div>
                     <button onClick={copyToClipboard} className="copy-button-inline">
                       <Copy size={16} />
@@ -180,23 +191,25 @@ const CouponCard: React.FC<CouponCardProps> = ({ coupon, user }) => {
                     Show Code
                   </button>
               )}
-            </div>
 
-            {coupon.website_link && (
-                <a
-                    href={coupon.website_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="website-link"
-                >
-                  <ExternalLink size={16} />
-                  Visit Website
-                </a>
-            )}
+              {coupon.website_link && (
+                  <a
+                      href={coupon.website_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="website-link"
+                  >
+                    <ExternalLink size={16} />
+                    Visit Website
+                  </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
   );
 };
+
+CouponCard.displayName = 'CouponCard';
 
 export default memo(CouponCard);
