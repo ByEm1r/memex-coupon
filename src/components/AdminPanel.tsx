@@ -52,6 +52,7 @@ const AdminPanel = () => {
   const [availableCoupons, setAvailableCoupons] = useState<any[]>([]);
   const [selectedCoupon, setSelectedCoupon] = useState<string>('');
   const [user, setUser] = useState<{ id: string } | null>(null);
+  const [editingCoupon, setEditingCoupon] = useState<any>(null);
 
   const [statistics, setStatistics] = useState({
     totalStores: 0,
@@ -291,9 +292,8 @@ const AdminPanel = () => {
       );
 
       toast.success(`Coupon ${!currentStatus ? 'approved' : 'unapproved'} successfully`);
-    } catch (error) {
-      console.error('Error updating coupon:', error);
-      toast.error('Failed to update coupon');
+    } catch (error: any) {
+      toast.error('Failed to update approval status');
     }
   };
 
@@ -312,6 +312,30 @@ const AdminPanel = () => {
     } catch (error) {
       console.error('Error deleting coupon:', error);
       toast.error('Failed to delete coupon');
+    }
+  };
+
+  const handleEditCoupon = (coupon: any) => {
+    setEditingCoupon(coupon);
+    setShowAddCoupon(true);
+  };
+
+  const handleCouponSubmit = async (e: React.FormEvent, formData: any) => {
+    e.preventDefault();
+    try {
+      const { error } = await supabase
+          .from('coupons')
+          .update(formData)
+          .eq('id', editingCoupon.id);
+
+      if (error) throw error;
+
+      toast.success('Coupon updated successfully');
+      setShowAddCoupon(false);
+      setEditingCoupon(null);
+      fetchCoupons();
+    } catch (error: any) {
+      toast.error('Failed to update coupon');
     }
   };
 
@@ -740,6 +764,13 @@ const AdminPanel = () => {
                                   {coupon.approved ? <X size={16} /> : <Check size={16} />}
                                 </button>
                                 <button
+                                    onClick={() => handleEditCoupon(coupon)}
+                                    className="p-1 rounded bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30"
+                                    title="Edit Coupon"
+                                >
+                                  <Edit size={16} />
+                                </button>
+                                <button
                                     onClick={() => handleDeleteCoupon(coupon.id)}
                                     className="p-1 rounded bg-red-500/20 text-red-400 hover:bg-red-500/30"
                                     title="Delete Coupon"
@@ -776,7 +807,8 @@ const AdminPanel = () => {
                   </select>
                   <button
                       onClick={handleAddToFeatured}
-                      className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg
+                      className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounde
+d-lg
                   hover:opacity-90 transition-all duration-300"
                   >
                     Add to Featured
@@ -968,6 +1000,39 @@ const AdminPanel = () => {
                 )}
               </div>
             </div>
+        )}
+
+        {showAddCoupon && (
+            <AddCouponForm
+                onSubmit={handleCouponSubmit}
+                onClose={() => {
+                  setShowAddCoupon(false);
+                  setEditingCoupon(null);
+                }}
+                categories={[
+                  'Food', 'Electronics', 'Clothing', 'Travel', 'Home & Garden',
+                  'Beauty', 'Sports & Outdoors', 'Books', 'Movies & Music',
+                  'Toys & Games', 'Health & Personal Care', 'Automotive', 'Baby',
+                  'Pet Supplies', 'Office Supplies', 'School Supplies',
+                  'Arts & Crafts', 'Industrial & Scientific', 'Crypto', 'Casino',
+                  'E-Commerce', 'Other'
+                ]}
+                countries={[
+                  'All Countries', 'USA', 'Canada', 'UK', 'Germany', 'France',
+                  'Turkey', 'Australia', 'Japan', 'China', 'India', 'Brazil',
+                  'Mexico', 'Italy', 'Spain', 'Netherlands', 'Switzerland',
+                  'Sweden', 'Norway', 'Denmark', 'Finland', 'Russia',
+                  'South Africa', 'Nigeria', 'Egypt', 'Saudi Arabia',
+                  'United Arab Emirates', 'Singapore', 'South Korea',
+                  'Argentina', 'Colombia', 'Peru', 'Chile', 'Austria',
+                  'Belgium', 'Ireland', 'Portugal', 'Greece', 'Poland',
+                  'Hungary', 'Czech Republic', 'Romania', 'Ukraine',
+                  'Vietnam', 'Thailand', 'Indonesia', 'Malaysia',
+                  'Philippines', 'New Zealand', 'Other'
+                ]}
+                editingCoupon={editingCoupon}
+                user={user}
+            />
         )}
       </div>
   );
