@@ -8,7 +8,6 @@ import '../styles/components/admin.css';
 interface User {
   id: string;
   email: string;
-  password: string;
   store_name: string;
   country: string;
   payment_verified: boolean;
@@ -46,7 +45,6 @@ const AdminPanel = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [couponSearchTerm, setCouponSearchTerm] = useState('');
   const [showAddCoupon, setShowAddCoupon] = useState(false);
-  const [showPasswords, setShowPasswords] = useState<Record<string, boolean>>({});
   const [showStatusDropdown, setShowStatusDropdown] = useState<string | null>(null);
   const [featuredCoupons, setFeaturedCoupons] = useState<any[]>([]);
   const [availableCoupons, setAvailableCoupons] = useState<any[]>([]);
@@ -384,8 +382,8 @@ const AdminPanel = () => {
       }
 
       toast.success(`Password reset request ${action === 'approve' ? 'approved' : 'rejected'} successfully`);
-      await fetchPasswordResets(); // Refresh the list
-      await fetchStatistics(); // Update statistics
+      await fetchPasswordResets();
+      await fetchStatistics();
 
     } catch (error: any) {
       console.error('Error handling password reset:', error);
@@ -594,7 +592,6 @@ const AdminPanel = () => {
                   <tr>
                     <th className="px-4 py-2 text-left">Store Name</th>
                     <th className="px-4 py-2 text-left">Email</th>
-                    <th className="px-4 py-2 text-left">Password</th>
                     <th className="px-4 py-2 text-left">Tx Hash</th>
                     <th className="px-4 py-2 text-left">Country</th>
                     <th className="px-4 py-2 text-left">Status</th>
@@ -604,34 +601,17 @@ const AdminPanel = () => {
                   <tbody>
                   {loading ? (
                       <tr>
-                        <td colSpan={7} className="text-center py-4">Loading...</td>
+                        <td colSpan={6} className="text-center py-4">Loading...</td>
                       </tr>
                   ) : filteredUsers.length === 0 ? (
                       <tr>
-                        <td colSpan={7} className="text-center py-4">No stores found</td>
+                        <td colSpan={6} className="text-center py-4">No stores found</td>
                       </tr>
                   ) : (
                       filteredUsers.map((user) => (
                           <tr key={user.id} className="border-t border-dark-quaternary">
                             <td className="px-4 py-2">{user.store_name}</td>
                             <td className="px-4 py-2">{user.email}</td>
-                            <td className="px-4 py-2">
-                              <div className="flex items-center gap-2">
-                          <span className="font-mono">
-                            {showPasswords[user.id] ? user.password : '••••••••'}
-                          </span>
-                                <button
-                                    onClick={() => togglePasswordVisibility(user.id)}
-                                    className="p-1 rounded bg-dark-quaternary hover:bg-dark-tertiary"
-                                >
-                                  {showPasswords[user.id] ? (
-                                      <EyeOff size={16} />
-                                  ) : (
-                                      <Eye size={16} />
-                                  )}
-                                </button>
-                              </div>
-                            </td>
                             <td className="px-4 py-2">
                               {user.transaction_hash ? (
                                   <a
@@ -807,9 +787,7 @@ const AdminPanel = () => {
                   </select>
                   <button
                       onClick={handleAddToFeatured}
-                      className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounde
-d-lg
-                  hover:opacity-90 transition-all duration-300"
+                      className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300"
                   >
                     Add to Featured
                   </button>
@@ -838,15 +816,15 @@ d-lg
                           </button>
                           <button
                               onClick={() => handleReorderFeatured(coupon.id, 'down')}
-                              disabled={index ===
-                                  featuredCoupons.length - 1}
+                              disabled={index === featuredCoupons.length - 1}
                               className="p-2 rounded bg-dark-quaternary hover:bg-dark-tertiary disabled:opacity-50"
                           >
                             ↓
                           </button>
                           <button
                               onClick={() => handleRemoveFromFeatured(coupon.id)}
-                              className="p-2 rounded bg-red-500/20 text-red-400 hover:bg-red-500/30"
+                              className="p-2 rounded bg-red-500/20 text-re
+d-400 hover:bg-red-500/30"
                           >
                             <X size={16} />
                           </button>
@@ -991,8 +969,7 @@ d-lg
                               setSettingsLoading(false);
                             }
                           }}
-                          className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg
-                    hover:opacity-90 transition-all duration-300"
+                          className="px-6 py-3 bg-gradient-to-r from-brand-blue to-brand-purple text-white rounded-lg hover:opacity-90 transition-all duration-300"
                       >
                         Save Settings
                       </button>
